@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:weather_app/view/screens/splash_scree.dart';
+import 'package:weather_app/view/screens/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());

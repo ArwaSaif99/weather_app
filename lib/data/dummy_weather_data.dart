@@ -3,60 +3,85 @@ import 'package:weather_app/model/hourly_weather.dart';
 import 'package:weather_app/model/weather_model.dart';
 
 List<WeatherModel> dummyWeatherData = [
-  WeatherModel(
-    date: DateTime.now().subtract(Duration(days: 3)),
-    title: 'Sunny',
-    description: 'Clear sky',
-    hourlyWeather: List.generate(24, (index) {
-      return HourlyWeather(
-        time: DateTime.now().subtract(const Duration(days: 3)).add(Duration(hours: index)),
-        title: 'Sunny',
-        description: 'Clear sky',
-        temperature: 25 + index.toDouble(),
-        icon: Icons.wb_sunny, 
-      );
-    }),
-  ),
-  WeatherModel(
-    date: DateTime.now().subtract(const Duration(days: 2)),
-    title: 'Cloudy',
-    description: 'Partly cloudy',
-    hourlyWeather: List.generate(24, (index) {
-      return HourlyWeather(
-        time: DateTime.now().subtract(const Duration(days: 2)).add(Duration(hours: index)),
-        title: 'Cloudy',
-        description: 'Partly cloudy',
-        temperature: 20 + index.toDouble(),
-        icon: Icons.cloud, 
-      );
-    }),
-  ),
-  WeatherModel(
-    date: DateTime.now().subtract(const Duration(days: 1)),
-    title: 'Rainy',
-    description: 'Light rain showers',
-    hourlyWeather: List.generate(24, (index) {
-      return HourlyWeather(
-        time: DateTime.now().subtract(const Duration(days: 1)).add(Duration(hours: index)),
-        title: 'Rainy',
-        description: 'Light rain showers',
-        temperature: 15 + index.toDouble(),
-        icon: Icons.grain, 
-      );
-    }),
-  ),
-  WeatherModel(
-    date: DateTime.now(),
-    title: 'Snowy',
-    description: 'Heavy snowfall',
-    hourlyWeather: List.generate(24, (index) {
-      return HourlyWeather(
-        time: DateTime.now().add(Duration(hours: index)),
-        title: 'Snowy',
-        description: 'Heavy snowfall',
-        temperature: 0 + index.toDouble(),
-        icon: Icons.ac_unit, 
-      );
-    }),
-  ),
+  for (var i = 0; i < 4; i++)
+    WeatherModel(
+      date: DateTime.now().add(Duration(days: i)),
+      title: _getTitleForDay(i),
+      description: _getDescriptionForDay(i),
+      iconUrl: _getIconUrlForDay(i),
+      hourlyWeather: List.generate(24, (index) {
+        return HourlyWeather(
+          time: DateTime.now().add(Duration(days: i, hours: index)),
+          title: _getTitleForDay(i),
+          description: _getDescriptionForDay(i),
+          temperature: _getTemperatureForHour(index),
+          icon: _getIconForDay(i),
+        );
+      }),
+    ),
 ];
+
+String _getTitleForDay(int dayIndex) {
+  switch (dayIndex) {
+    case 0:
+      return 'Sunny';
+    case 1:
+      return 'Cloudy';
+    case 2:
+      return 'Rainy';
+    case 3:
+      return 'Snowy';
+    default:
+      return '';
+  }
+}
+
+String _getDescriptionForDay(int dayIndex) {
+  switch (dayIndex) {
+    case 0:
+      return 'Clear sky';
+    case 1:
+      return 'Partly cloudy';
+    case 2:
+      return 'Light rain showers';
+    case 3:
+      return 'Heavy snowfall';
+    default:
+      return '';
+  }
+}
+
+String _getIconUrlForDay(int dayIndex) {
+  switch (dayIndex) {
+    case 0:
+      return 'assets/images/sun.png';
+    case 1:
+      return 'assets/images/cloud.png';
+    case 2:
+      return 'assets/images/rain.png';
+    case 3:
+      return 'assets/images/snow.png';
+    default:
+      return '';
+  }
+}
+
+double _getTemperatureForHour(int hourIndex) {
+  // Replace with your logic to generate temperature based on hour
+  return hourIndex.toDouble();
+}
+
+IconData _getIconForDay(int dayIndex) {
+  switch (dayIndex) {
+    case 0:
+      return Icons.wb_sunny;
+    case 1:
+      return Icons.cloud;
+    case 2:
+      return Icons.grain;
+    case 3:
+      return Icons.ac_unit;
+    default:
+      return Icons.error;
+  }
+}

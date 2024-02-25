@@ -8,6 +8,7 @@ class WeatherModel {
   String? title;
   String? description;
   String? iconUrl;
+  
   List<HourlyWeather>? hourlyWeather; 
   WeatherModel({
     this.id,

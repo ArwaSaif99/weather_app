@@ -4,6 +4,7 @@ import 'package:weather_app/bloc/weather_bloc.dart';
 import 'package:weather_app/bloc/weather_event.dart';
 import 'package:weather_app/bloc/weather_state.dart';
 import 'package:weather_app/const/colors.dart';
+import 'package:weather_app/data/countries.dart';
 import 'package:weather_app/view/widgets/app_bar_widgets.dart';
 import 'package:weather_app/view/widgets/drawer_widget.dart';
 import 'package:weather_app/view/widgets/error_indicator.dart';
@@ -21,8 +22,9 @@ class HomeScreen extends StatelessWidget {
 
     return Scaffold(
       key: scaffoldKey,
-      appBar: buildCustomAppBar(context, scaffoldKey), 
-      drawer: buildDrawer(context, scaffoldKey), 
+      appBar: buildCustomAppBar(context, scaffoldKey,
+          countries),
+      drawer: buildDrawer(context, scaffoldKey),
       body: BlocBuilder<WeatherBloc, WeatherState>(
         builder: (context, state) {
           if (state is WeatherLoading) {
@@ -61,7 +63,4 @@ class HomeScreen extends StatelessWidget {
       ),
     );
   }
-
- 
-
 }
