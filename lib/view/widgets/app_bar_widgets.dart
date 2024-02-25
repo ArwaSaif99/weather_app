@@ -69,7 +69,7 @@ AppBar buildCustomAppBar(BuildContext context, GlobalKey<ScaffoldState> scaffold
         color: Colors.white,
       ),
       onPressed: () {
-        scaffoldKey.currentState?.openDrawer(); // Use the scaffoldKey to open the drawer
+        scaffoldKey.currentState?.openDrawer(); 
       },
     ),
     title: Text(

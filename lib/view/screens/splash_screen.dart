@@ -7,6 +7,7 @@ import 'package:weather_app/const/colors.dart';
 import 'package:weather_app/view/screens/home_screen.dart';
 
 class SplashScreen extends StatefulWidget {
+  
   const SplashScreen({Key? key}) : super(key: key);
 
   @override

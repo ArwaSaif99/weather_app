@@ -7,7 +7,7 @@ abstract class WeatherEvent extends Equatable {
 class FetchWeatherData extends WeatherEvent {
   final String city;
 
-  const FetchWeatherData({required this.city}); // Define named parameter city
+  const FetchWeatherData({required this.city});
 
   @override
   List<Object> get props => [city];

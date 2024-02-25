@@ -67,7 +67,6 @@ String _getIconUrlForDay(int dayIndex) {
 }
 
 double _getTemperatureForHour(int hourIndex) {
-  // Replace with your logic to generate temperature based on hour
   return hourIndex.toDouble();
 }
 

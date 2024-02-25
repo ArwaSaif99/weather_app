@@ -16,8 +16,9 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String selectedCity = "New York";
+    String selectedCity = "Dubai";
     context.read<WeatherBloc>().add(FetchWeatherData(city: selectedCity));
+    
     final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
 
     return Scaffold(
